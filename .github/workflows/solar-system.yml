@@ -1,5 +1,5 @@
 name: Solar System Workflow
-
+run-name: Solar System - ${{ github.ref_name }} - ${{ github.run_number }} - {{github.actor}}
 on: 
   workflow_dispatch:
   push:
@@ -29,8 +29,8 @@ jobs:
         - name: Unit Testing
           run: npm test
           
-        # - name: Archive Test Result
-        #   uses: actions/upload-artifact@v3
-        #   with:
-        #     name: Mocha-Test-Result
-        #     path: test-results.xml
+        - name: Archive Test Result
+          uses: actions/upload-artifact@v6
+          with:
+            name: Mocha-Test-Result
+            path: test-results.xml
